@@ -61,7 +61,7 @@ function BigLink({
           x: sx,
           y: sy,
           display: 'inline-block',
-          fontSize: 'clamp(28px, 8vw, 112px)',
+          fontSize: 'clamp(24px, 4vw, 60px)',
           fontWeight: 900,
           letterSpacing: '-0.03em',
           textDecoration: 'none',
