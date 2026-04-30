@@ -14,6 +14,7 @@ const PROJECTS = [
       'A visual, node-based query builder that compiles to SQL and runs against a real database.',
     tags: ['React', 'ReactFlow', 'TypeScript', 'PostgreSQL', 'Express'],
     github: 'https://github.com/pujxn/flowquery',
+    live: 'https://flowquery.vercel.app',
   },
   {
     number: '02',
@@ -22,6 +23,7 @@ const PROJECTS = [
       'An AI-powered interview prep tool that generates questions from job descriptions and evaluates your answers.',
     tags: ['React', 'TypeScript', 'Groq', 'TanStack Query'],
     github: 'https://github.com/pujxn/prepgrid',
+    live: 'https://prepgrid-smoky.vercel.app',
   },
 ]
 
@@ -223,7 +225,7 @@ function ProjectCard({
           {project.number}
         </motion.div>
 
-        {/* Top row — number + github */}
+        {/* Top row — number + links */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 'clamp(24px, 4vw, 48px)' }}>
           <span
             style={{
@@ -236,7 +238,10 @@ function ProjectCard({
           >
             {project.number}
           </span>
-          <MagneticLink href={project.github}>View on GitHub</MagneticLink>
+          <div style={{ display: 'flex', gap: 'clamp(16px, 2.5vw, 32px)', alignItems: 'center' }}>
+            <MagneticLink href={project.live}>Live demo</MagneticLink>
+            <MagneticLink href={project.github}>GitHub</MagneticLink>
+          </div>
         </div>
 
         {/* Project name — letter slide-up */}
