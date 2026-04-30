@@ -178,12 +178,8 @@ function ProjectCard({
   }
 
   const tagVariants = {
-    rest: { y: 0, rotate: 0 },
-    hover: (i: number) => ({
-      y: [-3, 3, -2, 1, 0],
-      rotate: [-4, 4, -2, 1, 0],
-      transition: { delay: i * 0.05, duration: 0.45, ease: 'easeOut' },
-    }),
+    rest: {},
+    hover: {},
   }
 
   return (
@@ -312,7 +308,13 @@ function ProjectCard({
                 stiffness: 320,
                 damping: 14,
               }}
-              whileHover={{ scale: 1.12, rotate: [0, -3, 3, 0], transition: { duration: 0.3 } }}
+              whileHover={{
+                y: -3,
+                color: 'rgba(255,255,255,0.8)',
+                borderColor: 'rgba(255,255,255,0.3)',
+                background: 'rgba(255,255,255,0.07)',
+                transition: { duration: 0.2 },
+              }}
               style={{
                 fontSize: 11,
                 letterSpacing: '0.15em',

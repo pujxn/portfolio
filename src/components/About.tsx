@@ -58,30 +58,37 @@ function WordReveal({ inView }: { inView: boolean }) {
   )
 }
 
-// Wobbling decorative blob
-function WobblingBlob() {
+// Two counter-rotating squares — geometric, precise
+function RotatingSquares() {
+  const size = 'clamp(80px, 14vw, 160px)'
   return (
-    <motion.div
-      animate={{
-        borderRadius: [
-          '60% 40% 55% 45% / 50% 60% 40% 50%',
-          '40% 60% 45% 55% / 60% 40% 50% 50%',
-          '55% 45% 60% 40% / 40% 55% 60% 45%',
-          '60% 40% 55% 45% / 50% 60% 40% 50%',
-        ],
-        rotate: [0, 8, -6, 3, 0],
-        scale: [1, 1.04, 0.97, 1.02, 1],
-      }}
-      transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      style={{
-        width: 'clamp(100px, 18vw, 220px)',
-        height: 'clamp(100px, 18vw, 220px)',
-        background:
-          'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%)',
-        border: '1px solid rgba(255,255,255,0.08)',
-        flexShrink: 0,
-      }}
-    />
+    <div style={{ width: size, height: size, position: 'relative', flexShrink: 0 }}>
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          border: '1px solid rgba(255,255,255,0.12)',
+        }}
+      />
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
+        style={{
+          position: 'absolute',
+          inset: '22%',
+          border: '1px solid rgba(255,255,255,0.07)',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          inset: '47%',
+          background: 'rgba(255,255,255,0.5)',
+        }}
+      />
+    </div>
   )
 }
 
@@ -162,7 +169,7 @@ export default function About() {
               I AM
             </motion.div>
           </div>
-          <WobblingBlob />
+          <RotatingSquares />
         </div>
 
         {/* Main text */}
