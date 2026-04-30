@@ -48,10 +48,9 @@ function BigLink({
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-      style={{ overflow: 'hidden' }}
+      initial={{ opacity: 0 }}
+      animate={inView ? { opacity: 1 } : {}}
+      transition={{ delay, duration: 0.9, ease: 'easeOut' }}
     >
       <motion.a
         ref={ref}
@@ -62,13 +61,13 @@ function BigLink({
           x: sx,
           y: sy,
           display: 'inline-block',
-          fontSize: 'clamp(22px, 4.5vw, 72px)',
+          fontSize: 'clamp(20px, 3.4vw, 54px)',
           fontWeight: 900,
           letterSpacing: '-0.03em',
           textDecoration: 'none',
           color: hovered ? '#fff' : 'rgba(255,255,255,0.38)',
           cursor: 'none',
-          lineHeight: 1,
+          lineHeight: 1.3,
           transition: 'color 0.3s',
           position: 'relative',
         }}
@@ -210,7 +209,7 @@ export default function Contact() {
           fontSize: 'clamp(44px, 9vw, 130px)',
           fontWeight: 900,
           letterSpacing: '-0.04em',
-          lineHeight: 0.9,
+          lineHeight: 1.05,
           marginBottom: 'clamp(48px, 8vw, 96px)',
         }}
       >
