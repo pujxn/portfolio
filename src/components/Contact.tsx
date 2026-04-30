@@ -61,13 +61,13 @@ function BigLink({
           x: sx,
           y: sy,
           display: 'inline-block',
-          fontSize: 'clamp(20px, 3.4vw, 54px)',
+          fontSize: 'clamp(28px, 8vw, 112px)',
           fontWeight: 900,
           letterSpacing: '-0.03em',
           textDecoration: 'none',
           color: hovered ? '#fff' : 'rgba(255,255,255,0.38)',
           cursor: 'none',
-          lineHeight: 1.3,
+          lineHeight: 1.15,
           transition: 'color 0.3s',
           position: 'relative',
         }}
@@ -233,21 +233,40 @@ export default function Contact() {
       </div>
 
       {/* Links */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(8px, 1.5vw, 20px)' }}>
-        <BigLink
-          href="mailto:pujan.parikh2209@gmail.com"
-          inView={headingDone}
-          delay={0}
-        >
-          pujan.parikh2209@gmail.com
-        </BigLink>
-        <BigLink
-          href="https://github.com/pujxn"
-          inView={headingDone}
-          delay={0.15}
-        >
-          github.com/pujxn
-        </BigLink>
+      <div style={{ position: 'relative' }}>
+        {/* Ambient breathing glow */}
+        <motion.div
+          aria-hidden
+          animate={{ opacity: [0.18, 0.32, 0.18], scale: [1, 1.06, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '10%',
+            transform: 'translate(-10%, -50%)',
+            width: 'clamp(300px, 60vw, 800px)',
+            height: 'clamp(160px, 30vw, 400px)',
+            background: 'radial-gradient(ellipse, rgba(201,168,76,0.18) 0%, transparent 70%)',
+            filter: 'blur(40px)',
+            pointerEvents: 'none',
+          }}
+        />
+        <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 'clamp(4px, 1vw, 12px)' }}>
+          <BigLink
+            href="mailto:pujan.parikh2209@gmail.com"
+            inView={headingDone}
+            delay={0}
+          >
+            pujan.parikh2209@gmail.com
+          </BigLink>
+          <BigLink
+            href="https://github.com/pujxn"
+            inView={headingDone}
+            delay={0.15}
+          >
+            github.com/pujxn
+          </BigLink>
+        </div>
       </div>
 
       {/* Closing line */}

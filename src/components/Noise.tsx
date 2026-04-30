@@ -25,7 +25,7 @@ export default function Noise() {
         d[i] = v
         d[i + 1] = v
         d[i + 2] = v
-        d[i + 3] = (Math.random() * 18) | 0
+        d[i + 3] = (Math.random() * 28) | 0
       }
       ctx.putImageData(img, 0, 0)
     }
@@ -38,7 +38,7 @@ export default function Noise() {
     <canvas
       ref={canvasRef}
       className="fixed inset-0 pointer-events-none"
-      style={{ zIndex: 6, opacity: 0.55, mixBlendMode: 'screen' }}
+      style={{ zIndex: 6, opacity: 0.65, mixBlendMode: 'screen' }}
     />
   )
 }

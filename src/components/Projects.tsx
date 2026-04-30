@@ -315,6 +315,47 @@ function ProjectCard({
   )
 }
 
+function Marquee() {
+  const text = 'FLOWQUERY · PREPGRID · REACT · TYPESCRIPT · POSTGRESQL · GROQ · REACTFLOW · NODE · '
+  return (
+    <div
+      style={{
+        overflow: 'hidden',
+        marginBottom: 'clamp(40px, 8vw, 96px)',
+        borderTop: '1px solid rgba(255,255,255,0.04)',
+        borderBottom: '1px solid rgba(255,255,255,0.04)',
+        padding: '10px 0',
+      }}
+    >
+      <div
+        style={{
+          display: 'flex',
+          width: 'max-content',
+          animation: 'marquee 32s linear infinite',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        {[text, text, text].map((t, i) => (
+          <span
+            key={i}
+            style={{
+              fontSize: 11,
+              letterSpacing: '0.32em',
+              color: '#C9A84C',
+              opacity: 0.22,
+              paddingRight: '0',
+              textTransform: 'uppercase',
+              fontFamily: 'monospace',
+            }}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Projects() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const headingRef = useRef<HTMLDivElement>(null)
@@ -328,7 +369,7 @@ export default function Projects() {
       }}
     >
       {/* Section heading */}
-      <div ref={headingRef} style={{ marginBottom: 'clamp(40px, 8vw, 96px)' }}>
+      <div ref={headingRef} style={{ marginBottom: 'clamp(24px, 4vw, 48px)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 12 }}>
           <motion.div
             initial={{ scaleX: 0 }}
@@ -368,6 +409,8 @@ export default function Projects() {
           <SplitReveal text="PROJECTS" inView={headingInView} baseDelay={0.2} />
         </div>
       </div>
+
+      <Marquee />
 
       {/* Cards */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>

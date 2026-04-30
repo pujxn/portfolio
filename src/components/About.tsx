@@ -1,10 +1,10 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import ScrambleText from './ScrambleText'
 
 const TEXT =
   "4+ years building React applications. Previously at Goldman Sachs. I care about performance, architecture, and interfaces that feel alive."
 
-// Words that get a brief accent highlight on reveal
 const ACCENTED = new Set(['Goldman', 'Sachs', 'alive.', 'performance,'])
 
 function WordReveal({ inView }: { inView: boolean }) {
@@ -35,11 +35,7 @@ function WordReveal({ inView }: { inView: boolean }) {
                 color: isAccented ? '#C9A84C' : undefined,
               }}
               initial={{ y: randY, opacity: 0 }}
-              animate={
-                inView
-                  ? { y: 0, opacity: 1 }
-                  : {}
-              }
+              animate={inView ? { y: 0, opacity: 1 } : {}}
               transition={{
                 delay: i * 0.045,
                 duration: 0.7,
@@ -57,7 +53,6 @@ function WordReveal({ inView }: { inView: boolean }) {
   )
 }
 
-// Static dot grid — minimal, matches the particle field aesthetic
 function DotGrid() {
   const COLS = 6
   const ROWS = 4
@@ -85,7 +80,6 @@ function DotGrid() {
   )
 }
 
-// A line that draws itself horizontally
 function DrawLine({ inView, delay = 0 }: { inView: boolean; delay?: number }) {
   return (
     <motion.div
@@ -99,6 +93,114 @@ function DrawLine({ inView, delay = 0 }: { inView: boolean; delay?: number }) {
         width: '100%',
       }}
     />
+  )
+}
+
+function ScrambleStat({
+  value,
+  label,
+  inView,
+  delay,
+}: {
+  value: string
+  label: string
+  inView: boolean
+  delay: number
+}) {
+  const [scrambling, setScrambling] = useState(false)
+  const [scrambleKey, setScrambleKey] = useState(0)
+
+  const onEnter = () => {
+    setScrambling(true)
+    setScrambleKey((k) => k + 1)
+  }
+  const onLeave = () => setScrambling(false)
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay, duration: 0.7, ease: 'easeOut' }}
+      whileHover={{ y: -4, transition: { duration: 0.25 } }}
+      onHoverStart={onEnter}
+      onHoverEnd={onLeave}
+      style={{ cursor: 'default' }}
+    >
+      <div
+        style={{
+          fontSize: 'clamp(28px, 4vw, 52px)',
+          fontWeight: 900,
+          letterSpacing: '-0.04em',
+          color: '#C9A84C',
+          lineHeight: 1,
+          marginBottom: 6,
+          minWidth: '2.5ch',
+        }}
+      >
+        {scrambling ? (
+          <ScrambleText key={scrambleKey} text={value} delay={0} />
+        ) : (
+          value
+        )}
+      </div>
+      <div
+        style={{
+          fontSize: 11,
+          letterSpacing: '0.18em',
+          color: 'rgba(255,255,255,0.22)',
+          textTransform: 'uppercase',
+        }}
+      >
+        {label}
+      </div>
+    </motion.div>
+  )
+}
+
+function CurrentlyLine({ inView }: { inView: boolean }) {
+  const FULL = '> currently: open to frontend roles · pune, india'
+  const [displayed, setDisplayed] = useState('')
+  const started = useRef(false)
+
+  useEffect(() => {
+    if (!inView || started.current) return
+    started.current = true
+    let i = 0
+    const id = setInterval(() => {
+      i++
+      setDisplayed(FULL.slice(0, i))
+      if (i >= FULL.length) clearInterval(id)
+    }, 38)
+    return () => clearInterval(id)
+  }, [inView])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={inView ? { opacity: 1 } : {}}
+      transition={{ delay: 1.0, duration: 0.5 }}
+      style={{
+        fontFamily: 'monospace',
+        fontSize: 'clamp(11px, 1.1vw, 14px)',
+        color: 'rgba(255,255,255,0.32)',
+        marginTop: 'clamp(28px, 4vw, 44px)',
+        letterSpacing: '0.03em',
+      }}
+    >
+      {displayed}
+      <span
+        style={{
+          display: 'inline-block',
+          width: '0.55em',
+          height: '1em',
+          background: '#C9A84C',
+          marginLeft: 2,
+          verticalAlign: 'text-bottom',
+          animation: 'blink 1s step-end infinite',
+          opacity: 0.8,
+        }}
+      />
+    </motion.div>
   )
 }
 
@@ -169,43 +271,23 @@ export default function About() {
         <WordReveal inView={inView} />
 
         {/* Stats row */}
-        <div style={{ display: 'flex', gap: 'clamp(32px, 6vw, 80px)', flexWrap: 'wrap' }}>
-          {[
-            { value: '4+', label: 'Years of experience' },
-            { value: 'GS', label: 'Goldman Sachs alumnus' },
-            { value: '∞', label: 'React renders shipped' },
-          ].map(({ value, label }, i) => (
-            <motion.div
-              key={label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.6 + i * 0.12, duration: 0.7, ease: 'easeOut' }}
-              whileHover={{ y: -4, transition: { duration: 0.25 } }}
-            >
-              <div
-                style={{
-                  fontSize: 'clamp(28px, 4vw, 52px)',
-                  fontWeight: 900,
-                  letterSpacing: '-0.04em',
-                  color: '#C9A84C',
-                  lineHeight: 1,
-                  marginBottom: 6,
-                }}
-              >
-                {value}
-              </div>
-              <div
-                style={{
-                  fontSize: 11,
-                  letterSpacing: '0.18em',
-                  color: 'rgba(255,255,255,0.22)',
-                  textTransform: 'uppercase',
-                }}
-              >
-                {label}
-              </div>
-            </motion.div>
-          ))}
+        <div>
+          <div style={{ display: 'flex', gap: 'clamp(32px, 6vw, 80px)', flexWrap: 'wrap' }}>
+            {[
+              { value: '4+', label: 'Years of experience' },
+              { value: 'GS', label: 'Goldman Sachs alumnus' },
+              { value: '∞', label: 'React renders shipped' },
+            ].map(({ value, label }, i) => (
+              <ScrambleStat
+                key={label}
+                value={value}
+                label={label}
+                inView={inView}
+                delay={0.6 + i * 0.12}
+              />
+            ))}
+          </div>
+          <CurrentlyLine inView={inView} />
         </div>
       </div>
 
