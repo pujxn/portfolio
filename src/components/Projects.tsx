@@ -4,7 +4,6 @@ import {
   useInView,
   useMotionValue,
   useSpring,
-  useTransform,
 } from 'framer-motion'
 
 const PROJECTS = [
@@ -144,14 +143,6 @@ function ProjectCard({
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-8% 0px' })
 
-  // 3D tilt
-  const mx = useMotionValue(0)
-  const my = useMotionValue(0)
-  const smx = useSpring(mx, { damping: 20, stiffness: 220 })
-  const smy = useSpring(my, { damping: 20, stiffness: 220 })
-  const rotX = useTransform(smy, [-0.5, 0.5], [10, -10])
-  const rotY = useTransform(smx, [-0.5, 0.5], [-10, 10])
-
   // Inner cursor glow
   const [glow, setGlow] = useState({ x: 50, y: 50 })
   const [hovered, setHovered] = useState(false)
@@ -159,14 +150,9 @@ function ProjectCard({
   const isInactive = activeIndex !== null && activeIndex !== index
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const nx = (e.clientX - rect.left) / rect.width - 0.5
-    const ny = (e.clientY - rect.top) / rect.height - 0.5
-    mx.set(nx)
-    my.set(ny)
     setGlow({
-      x: ((e.clientX - rect.left) / rect.width) * 100,
-      y: ((e.clientY - rect.top) / rect.height) * 100,
+      x: ((e.clientX - e.currentTarget.getBoundingClientRect().left) / e.currentTarget.getBoundingClientRect().width) * 100,
+      y: ((e.clientY - e.currentTarget.getBoundingClientRect().top) / e.currentTarget.getBoundingClientRect().height) * 100,
     })
   }
 
@@ -191,10 +177,6 @@ function ProjectCard({
     >
       <motion.div
         style={{
-          rotateX: rotX,
-          rotateY: rotY,
-          transformStyle: 'preserve-3d',
-          perspective: 1200,
           position: 'relative',
           border: '1px solid',
           borderColor: hovered ? 'rgba(255,255,255,0.14)' : 'rgba(255,255,255,0.06)',
