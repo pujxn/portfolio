@@ -23,8 +23,8 @@ export default function ScrambleText({ text, delay = 0, className, onDone }: Pro
     let frameId: number
     let startTime: number | null = null
 
-    const LETTER_STAGGER = 55   // ms between each letter starting to settle
-    const SCRAMBLE_DURATION = 480 // ms each letter scrambles before locking
+    const LETTER_STAGGER = 32
+    const SCRAMBLE_DURATION = 240
 
     function animate(ts: number) {
       if (!startTime) startTime = ts

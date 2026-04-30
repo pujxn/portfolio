@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 
 interface Props {
@@ -7,6 +7,8 @@ interface Props {
 }
 
 export default function CustomCursor({ mouseX, mouseY }: Props) {
+  const [isTouch, setIsTouch] = useState(false)
+
   const x = useMotionValue(-100)
   const y = useMotionValue(-100)
 
@@ -19,28 +21,37 @@ export default function CustomCursor({ mouseX, mouseY }: Props) {
   const ty = useSpring(y, trailConfig)
 
   useEffect(() => {
-    const move = (e: MouseEvent) => {
+    setIsTouch(window.matchMedia('(pointer: coarse)').matches)
+
+    const onMove = (e: MouseEvent) => {
       mouseX.current = e.clientX
       mouseY.current = e.clientY
       x.set(e.clientX)
       y.set(e.clientY)
     }
-    window.addEventListener('mousemove', move)
-    return () => window.removeEventListener('mousemove', move)
+
+    const onTouch = (e: TouchEvent) => {
+      const t = e.touches[0]
+      mouseX.current = t.clientX
+      mouseY.current = t.clientY
+    }
+
+    window.addEventListener('mousemove', onMove)
+    window.addEventListener('touchmove', onTouch, { passive: true })
+    return () => {
+      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('touchmove', onTouch)
+    }
   }, [x, y, mouseX, mouseY])
+
+  if (isTouch) return null
 
   return (
     <>
       {/* outer ring — trails behind */}
       <motion.div
         className="fixed pointer-events-none"
-        style={{
-          top: -18,
-          left: -18,
-          x: tx,
-          y: ty,
-          zIndex: 9999,
-        }}
+        style={{ top: -18, left: -18, x: tx, y: ty, zIndex: 9999 }}
       >
         <div
           style={{
@@ -55,13 +66,7 @@ export default function CustomCursor({ mouseX, mouseY }: Props) {
       {/* inner dot — snappy */}
       <motion.div
         className="fixed pointer-events-none"
-        style={{
-          top: -2.5,
-          left: -2.5,
-          x: sx,
-          y: sy,
-          zIndex: 9999,
-        }}
+        style={{ top: -2.5, left: -2.5, x: sx, y: sy, zIndex: 9999 }}
       >
         <div
           style={{

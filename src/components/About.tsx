@@ -179,7 +179,7 @@ export default function About() {
         <div style={{ display: 'flex', gap: 'clamp(32px, 6vw, 80px)', flexWrap: 'wrap' }}>
           {[
             { value: '4+', label: 'Years of experience' },
-            { value: 'GS', label: 'Goldman Sachs alumni' },
+            { value: 'GS', label: 'Goldman Sachs alumnus' },
             { value: '∞', label: 'React renders shipped' },
           ].map(({ value, label }, i) => (
             <motion.div
