@@ -22,7 +22,6 @@ function WordReveal({ inView }: { inView: boolean }) {
     >
       {words.map((word, i) => {
         const isAccented = ACCENTED.has(word)
-        const randRotate = ((i * 137) % 9) - 4.5 // deterministic pseudo-random
         const randY = 20 + ((i * 73) % 30)
 
         return (
@@ -35,10 +34,10 @@ function WordReveal({ inView }: { inView: boolean }) {
                 display: 'inline-block',
                 color: isAccented ? '#C9A84C' : undefined,
               }}
-              initial={{ y: randY, rotate: randRotate, opacity: 0 }}
+              initial={{ y: randY, opacity: 0 }}
               animate={
                 inView
-                  ? { y: 0, rotate: 0, opacity: 1 }
+                  ? { y: 0, opacity: 1 }
                   : {}
               }
               transition={{
@@ -58,36 +57,30 @@ function WordReveal({ inView }: { inView: boolean }) {
   )
 }
 
-// Two counter-rotating squares — geometric, precise
-function RotatingSquares() {
-  const size = 'clamp(80px, 14vw, 160px)'
+// Static dot grid — minimal, matches the particle field aesthetic
+function DotGrid() {
+  const COLS = 6
+  const ROWS = 4
   return (
-    <div style={{ width: size, height: size, position: 'relative', flexShrink: 0 }}>
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
-        style={{
-          position: 'absolute',
-          inset: 0,
-          border: '1px solid rgba(201,168,76,0.35)',
-        }}
-      />
-      <motion.div
-        animate={{ rotate: -360 }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
-        style={{
-          position: 'absolute',
-          inset: '22%',
-          border: '1px solid rgba(201,168,76,0.18)',
-        }}
-      />
-      <div
-        style={{
-          position: 'absolute',
-          inset: '47%',
-          background: '#C9A84C',
-        }}
-      />
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: `repeat(${COLS}, 1fr)`,
+        gap: 'clamp(8px, 1.4vw, 18px)',
+        flexShrink: 0,
+      }}
+    >
+      {Array.from({ length: COLS * ROWS }).map((_, i) => (
+        <div
+          key={i}
+          style={{
+            width: 3,
+            height: 3,
+            borderRadius: '50%',
+            background: i % 7 === 0 ? '#C9A84C' : 'rgba(255,255,255,0.12)',
+          }}
+        />
+      ))}
     </div>
   )
 }
@@ -169,7 +162,7 @@ export default function About() {
               I AM
             </motion.div>
           </div>
-          <RotatingSquares />
+          <DotGrid />
         </div>
 
         {/* Main text */}

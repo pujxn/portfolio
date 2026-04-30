@@ -50,8 +50,8 @@ function SplitReveal({
         >
           <motion.span
             style={{ display: 'inline-block' }}
-            initial={{ y: '110%', rotate: 4 }}
-            animate={inView ? { y: '0%', rotate: 0 } : {}}
+            initial={{ y: '110%' }}
+            animate={inView ? { y: '0%' } : {}}
             transition={{
               delay: baseDelay + i * 0.038,
               duration: 0.65,
@@ -225,7 +225,7 @@ function ProjectCard({
         {/* Big background number */}
         <motion.div
           aria-hidden
-          animate={hovered ? { scale: 1.04, rotate: 2 } : { scale: 1, rotate: 0 }}
+          animate={hovered ? { scale: 1.06 } : { scale: 1 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
           style={{
             position: 'absolute',
