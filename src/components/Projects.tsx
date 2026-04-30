@@ -157,8 +157,6 @@ function ProjectCard({
   }
 
   const onLeave = () => {
-    mx.set(0)
-    my.set(0)
     setHovered(false)
     setActiveIndex(null)
   }
