@@ -249,7 +249,7 @@ function ProjectCard({
             style={{
               fontSize: 11,
               letterSpacing: '0.35em',
-              color: 'rgba(255,255,255,0.2)',
+              color: '#C9A84C',
               textTransform: 'uppercase',
               fontFamily: 'monospace',
             }}
@@ -368,7 +368,7 @@ export default function Projects() {
             style={{
               fontSize: 11,
               letterSpacing: '0.4em',
-              color: 'rgba(255,255,255,0.25)',
+              color: '#C9A84C',
               textTransform: 'uppercase',
             }}
           >

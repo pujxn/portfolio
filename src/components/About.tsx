@@ -33,7 +33,7 @@ function WordReveal({ inView }: { inView: boolean }) {
             <motion.span
               style={{
                 display: 'inline-block',
-                color: isAccented ? 'rgba(255,255,255,1)' : undefined,
+                color: isAccented ? '#C9A84C' : undefined,
               }}
               initial={{ y: randY, rotate: randRotate, opacity: 0 }}
               animate={
@@ -69,7 +69,7 @@ function RotatingSquares() {
         style={{
           position: 'absolute',
           inset: 0,
-          border: '1px solid rgba(255,255,255,0.12)',
+          border: '1px solid rgba(201,168,76,0.35)',
         }}
       />
       <motion.div
@@ -78,14 +78,14 @@ function RotatingSquares() {
         style={{
           position: 'absolute',
           inset: '22%',
-          border: '1px solid rgba(255,255,255,0.07)',
+          border: '1px solid rgba(201,168,76,0.18)',
         }}
       />
       <div
         style={{
           position: 'absolute',
           inset: '47%',
-          background: 'rgba(255,255,255,0.5)',
+          background: '#C9A84C',
         }}
       />
     </div>
@@ -144,7 +144,7 @@ export default function About() {
               style={{
                 fontSize: 11,
                 letterSpacing: '0.4em',
-                color: 'rgba(255,255,255,0.2)',
+                color: '#C9A84C',
                 textTransform: 'uppercase',
                 display: 'block',
                 marginBottom: 16,
@@ -194,7 +194,7 @@ export default function About() {
                   fontSize: 'clamp(28px, 4vw, 52px)',
                   fontWeight: 900,
                   letterSpacing: '-0.04em',
-                  color: '#fff',
+                  color: '#C9A84C',
                   lineHeight: 1,
                   marginBottom: 6,
                 }}

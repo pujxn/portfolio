@@ -62,7 +62,7 @@ export default function Hero() {
             letterSpacing: '0.45em',
             fontSize: 11,
             fontWeight: 500,
-            color: 'rgba(255,255,255,0.28)',
+            color: '#C9A84C',
             textTransform: 'uppercase',
             marginBottom: 28,
           }}
@@ -115,7 +115,7 @@ export default function Hero() {
           style={{
             width: 'clamp(200px, 30vw, 420px)',
             height: 1,
-            background: 'rgba(255,255,255,0.1)',
+            background: 'rgba(201,168,76,0.35)',
             marginTop: 28,
             marginBottom: 28,
             transformOrigin: 'left center',

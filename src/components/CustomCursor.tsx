@@ -68,7 +68,8 @@ export default function CustomCursor({ mouseX, mouseY }: Props) {
             width: 5,
             height: 5,
             borderRadius: '50%',
-            background: '#fff',
+            background: '#C9A84C',
+            boxShadow: '0 0 8px 2px rgba(201,168,76,0.5)',
           }}
         />
       </motion.div>

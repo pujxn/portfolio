@@ -154,7 +154,8 @@ function PulseRing() {
           position: 'absolute',
           inset: '35%',
           borderRadius: '50%',
-          background: 'rgba(255,255,255,0.9)',
+          background: '#C9A84C',
+          boxShadow: '0 0 10px 2px rgba(201,168,76,0.6)',
         }}
       />
     </div>
@@ -195,7 +196,7 @@ export default function Contact() {
           style={{
             fontSize: 11,
             letterSpacing: '0.4em',
-            color: 'rgba(255,255,255,0.2)',
+            color: '#C9A84C',
             textTransform: 'uppercase',
           }}
         >
