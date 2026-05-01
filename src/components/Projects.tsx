@@ -321,7 +321,7 @@ function ProjectCard({
 }
 
 function Marquee() {
-  const text = 'FLOWQUERY · PREPGRID · REACT · TYPESCRIPT · POSTGRESQL · GROQ · REACTFLOW · NODE · '
+  const text = 'REACT · TYPESCRIPT · JAVASCRIPT · NEXT.JS · HTML · CSS · TANSTACK QUERY · TANSTACK ROUTER · REDUX · ZUSTAND · ZOD · TAILWIND CSS · MATERIAL UI · SHADCN/UI · FRAMER MOTION · TANSTACK VIRTUAL · WEB VITALS · OPTIMISTIC UI · RECHARTS · D3.JS · WEBSOCKETS · REACTFLOW · NODE.JS · EXPRESS · POSTGRESQL · PYTHON · SQL · REST APIS · VITEST · REACT TESTING LIBRARY · FIGMA · VITE · GIT · '
   return (
     <div
       style={{
@@ -336,7 +336,7 @@ function Marquee() {
         style={{
           display: 'flex',
           width: 'max-content',
-          animation: 'marquee 32s linear infinite',
+          animation: 'marquee 80s linear infinite',
           whiteSpace: 'nowrap',
         }}
       >
