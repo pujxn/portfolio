@@ -12,7 +12,7 @@ const PROJECTS = [
     name: 'FLOWQUERY',
     description:
       'A visual, node-based query builder that compiles to SQL and runs against a real database.',
-    tags: ['React', 'ReactFlow', 'TypeScript', 'PostgreSQL', 'Express'],
+    tags: ['React', 'ReactFlow', 'TypeScript', 'PostgreSQL', 'Express', 'Vitest'],
     github: 'https://github.com/pujxn/flowquery',
     live: 'https://flowquery.vercel.app',
   },
