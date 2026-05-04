@@ -35,6 +35,20 @@ const PROJECTS = [
     github: 'https://github.com/pujxn/prepgrid',
     live: 'https://prepgrid-smoky.vercel.app',
   },
+  {
+    number: '03',
+    name: 'DATALENS',
+    description:
+      'Upload a CSV and instantly get AI-generated insights, auto-selected charts, and a chat interface to ask questions about your data.',
+    highlights: [
+      'Column type detection drives smart chart selection — bar, line, or histogram chosen automatically',
+      'Groq-powered insights and chat stream progressively with a live cursor',
+      'Data parsed entirely client-side via Papa Parse — never sent to a server',
+    ],
+    tags: ['Next.js', 'TypeScript', 'Groq', 'Recharts', 'Clerk', 'shadcn/ui'],
+    github: 'https://github.com/pujxn/datalens',
+    live: 'https://datalens-wine.vercel.app',
+  },
 ]
 
 // Letters slide up from behind a clip — each one staggered
