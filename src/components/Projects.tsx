@@ -12,6 +12,11 @@ const PROJECTS = [
     name: 'FLOWQUERY',
     description:
       'A visual, node-based query builder that compiles to SQL and runs against a real database.',
+    highlights: [
+      'SQL and REST filter output updates live as you connect nodes',
+      'Graph validation rejects invalid connections with visual feedback',
+      'Full graph state encoded into a shareable URL',
+    ],
     tags: ['React', 'ReactFlow', 'TypeScript', 'PostgreSQL', 'Express', 'Vitest'],
     github: 'https://github.com/pujxn/flowquery',
     live: 'https://flowquery.vercel.app',
@@ -21,6 +26,11 @@ const PROJECTS = [
     name: 'PREPGRID',
     description:
       'An AI-powered interview prep tool that generates questions from job descriptions and evaluates your answers.',
+    highlights: [
+      'Generates 12–15 questions across Technical, Behavioral, and Role-specific categories',
+      'Each answer scored out of 10 with strengths, weaknesses, and a suggested response',
+      'Timer mode with auto-submit and colour-coded countdown',
+    ],
     tags: ['React', 'TypeScript', 'Groq', 'TanStack Query'],
     github: 'https://github.com/pujxn/prepgrid',
     live: 'https://prepgrid-smoky.vercel.app',
@@ -271,11 +281,45 @@ function ProjectCard({
             color: 'rgba(255,255,255,0.42)',
             lineHeight: 1.65,
             maxWidth: 580,
-            marginBottom: 'clamp(24px, 4vw, 44px)',
+            marginBottom: 'clamp(16px, 2.5vw, 28px)',
           }}
         >
           {project.description}
         </motion.p>
+
+        {/* Highlights */}
+        <motion.ul
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: index * 0.18 + 0.7, duration: 0.8, ease: 'easeOut' }}
+          style={{
+            listStyle: 'none',
+            padding: 0,
+            margin: 0,
+            marginBottom: 'clamp(24px, 4vw, 44px)',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 8,
+            maxWidth: 560,
+          }}
+        >
+          {project.highlights.map((h, i) => (
+            <li
+              key={i}
+              style={{
+                display: 'flex',
+                alignItems: 'baseline',
+                gap: 10,
+                fontSize: 'clamp(12px, 1.2vw, 14px)',
+                color: 'rgba(255,255,255,0.25)',
+                lineHeight: 1.55,
+              }}
+            >
+              <span style={{ color: '#C9A84C', flexShrink: 0, fontSize: 10 }}>—</span>
+              {h}
+            </li>
+          ))}
+        </motion.ul>
 
         {/* Tech tags */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
