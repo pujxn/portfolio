@@ -135,7 +135,7 @@ export default function Hero() {
             fontWeight: 400,
           }}
         >
-          Pune · React · 4+ years
+          Pune · React · 3.5 years
         </motion.div>
       </motion.div>
 

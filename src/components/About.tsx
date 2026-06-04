@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion'
 import ScrambleText from './ScrambleText'
 
 const TEXT =
-  "4+ years building React applications. Previously at Goldman Sachs. I care about performance, architecture, and interfaces that feel alive."
+  "3.5 years building React applications. Previously at Goldman Sachs. I care about performance, architecture, and interfaces that feel alive."
 
 const ACCENTED = new Set(['Goldman', 'Sachs', 'alive.', 'performance,'])
 
@@ -158,7 +158,7 @@ function ScrambleStat({
 }
 
 function CurrentlyLine({ inView }: { inView: boolean }) {
-  const FULL = '> currently: open to frontend roles · pune, india'
+  const FULL = '> currently: open to fullstack roles · pune, india'
   const [displayed, setDisplayed] = useState('')
   const started = useRef(false)
 
@@ -274,7 +274,7 @@ export default function About() {
         <div>
           <div style={{ display: 'flex', gap: 'clamp(32px, 6vw, 80px)', flexWrap: 'wrap' }}>
             {[
-              { value: '4+', label: 'Years of experience' },
+              { value: '3.5', label: 'Years of experience' },
               { value: 'GS', label: 'Goldman Sachs alumnus' },
               { value: '∞', label: 'React renders shipped' },
             ].map(({ value, label }, i) => (
