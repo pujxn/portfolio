@@ -67,7 +67,7 @@ export default function Hero() {
             marginBottom: 28,
           }}
         >
-          Senior Software Engineer
+          Senior Fullstack Engineer
         </motion.div>
 
         {/* Name — the centrepiece */}
@@ -135,7 +135,7 @@ export default function Hero() {
             fontWeight: 400,
           }}
         >
-          Pune · React · 3.5 years
+          Pune · 3.5 years
         </motion.div>
       </motion.div>
 

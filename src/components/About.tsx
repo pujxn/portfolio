@@ -276,7 +276,6 @@ export default function About() {
             {[
               { value: '3.5', label: 'Years of experience' },
               { value: 'GS', label: 'Goldman Sachs alumnus' },
-              { value: '∞', label: 'React renders shipped' },
             ].map(({ value, label }, i) => (
               <ScrambleStat
                 key={label}
