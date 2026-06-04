@@ -9,6 +9,7 @@
 - 3D parallax tilt on text block tracking mouse position
 - Scroll cue, Pune coordinates easter egg, sequential subtitle fade-in after scramble completes
 - Film grain noise overlay (canvas, 14fps, screen blend mode)
+- Header: "Senior Fullstack Engineer" · tagline: "Pune · 3.5 years"
 
 ### Projects
 - Two full-width project blocks: FlowQuery and PrepGrid
@@ -17,23 +18,29 @@
 - Inner spotlight glow follows cursor position within card
 - Inactive card blurs and dims when the other is hovered
 - Chromatic aberration (RGB split) on project title on hover
-- Magnetic GitHub link — pulls toward cursor
+- Magnetic GitHub + Live demo links — pull toward cursor
 - Tech stack tags spring in with stagger; lift + border brighten on hover
+- README highlights (3 bullet points per project) shown under the description
 
 ### About
 - Word-by-word spring reveal with randomised initial Y offset per word
 - Accented words (Goldman Sachs, performance, alive.) render in gold on reveal
 - Static dot grid decoration (6×4, scattered gold dots)
-- Stat row: 4+, GS, ∞ — lift on hover; values in gold
+- Stat row: 3.5, GS — lift on hover; values in gold
+- Terminal-style "currently: open to fullstack roles · pune, india" typewriter line with blinking gold cursor
 
 ### Contact
 - Three-line scramble heading: "WANT TO BUILD / SOMETHING / GREAT?"
 - Email and GitHub as large magnetic links — pull toward cursor, chromatic aberration + sweep underline on hover, ScrambleText re-fires on hover
+- Ambient breathing gold glow behind links
 - Pulsing gold dot with three radiating rings
 - Closing rule + copyright line
 
+### Scroll progress
+- ScrollProgress component wired into App
+
 ## Gold accent (#C9A84C) applied to
-Cursor dot · Hero eyebrow + rule · "Selected work" label · Project number tags · About label + stat values + accented words + dot grid · Contact label + pulse dot
+Cursor dot · Hero eyebrow + rule · "Selected work" label · Project number tags · About label + stat values + accented words + dot grid + cursor blink · Contact label + pulse dot + ambient glow
 
 ## Stack
 React 19 + TypeScript · Vite · Framer Motion · Tailwind CSS v4
@@ -44,6 +51,5 @@ React 19 + TypeScript · Vite · Framer Motion · Tailwind CSS v4
 - Auto-deploy via GitHub Actions on every push to `main` (Vercel GitHub App connection failed; Actions workflow bypasses it)
 
 ## What's not built yet
-- PrepGrid GitHub link (placeholder — repo not yet public)
 - Mobile layout polish
 - Open Graph / meta tags for sharing
